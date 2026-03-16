@@ -1,0 +1,6 @@
+--STARTGOTURK--
+MsgBox "TEST LINE 1", 64, "Status Update"
+--STARTENSGO--
+TurkyGoStart
+MsgBox "TEST LINE 2", 64, "Status Update"
+TurkyGoEnd

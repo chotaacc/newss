@@ -1,1 +1,1 @@
-https://raw.githubusercontent.com/chotaacc/newss/main/x64new.txt
+https://raw.githubusercontent.com/chotaacc/newss/refs/heads/main/x64new.txt
